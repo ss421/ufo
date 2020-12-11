@@ -22,6 +22,7 @@
 #include "ufo/filters/ObsDomainCheck.h"
 #include "ufo/filters/ObsDomainErrCheck.h"
 #include "ufo/filters/PoissonDiskThinning.h"
+#include "ufo/filters/PracticalBoundsCheck.h"
 #include "ufo/filters/PreQC.h"
 #include "ufo/filters/ProfileConsistencyChecks.h"
 #include "ufo/filters/QCmanager.h"
@@ -83,6 +84,8 @@ template<typename MODEL> void instantiateObsFilterFactory() {
            legacyGaussianThinningMaker("Gaussian_Thinning");
   static oops::FilterMaker<MODEL, oops::ObsFilter<MODEL, ufo::TemporalThinning> >
            legacyTemporalThinningMaker("TemporalThinning");
+  static oops::FilterMaker<MODEL, oops::ObsFilter<MODEL, ufo::PracticalBoundsCheck> >
+           practicalBoundsCheckMaker("Practical Bounds Check");
 }
 
 }  // namespace ufo
